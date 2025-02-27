@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/widgets/widgets.dart';
 
 
 class SettingsScreen extends StatelessWidget {
@@ -13,9 +14,60 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: const Center(
-        child: Text('SettingsScren'),
-     ),
+      drawer: const SideMenu(),
+      body:  Padding(
+        padding:  const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Ajustes', style: TextStyle( fontSize: 45, fontWeight: FontWeight.w300 )),
+              const Divider(),
+
+              SwitchListTile.adaptive(
+                value: true, 
+                title:  const Text('Darkmode'),
+                onChanged: ( value ) {
+                  
+                }
+              ),
+              const Divider(),  
+
+              RadioListTile(
+                value: 1, 
+                groupValue: 1, 
+                title: const Text('Masculino'),
+                onChanged: ( value ) {
+
+                }
+              ),
+              const Divider(),  
+              RadioListTile(
+                value: 2, 
+                groupValue: 1, 
+                title: const Text('Femenino'),
+                onChanged: ( value ) {
+
+                }
+              ),
+
+              const Divider(),
+
+              Padding(
+                padding: const EdgeInsets.symmetric( horizontal: 20 ),
+                child: TextFormField(
+                  initialValue: 'Ortiz',
+                  decoration: const InputDecoration(
+                    labelText: 'Nombre',
+                    helperText: 'Nombre del usuario'
+                  ),
+                ),
+              )
+
+            ]
+          ),
+        ),
+      )
    );
   }
 }
